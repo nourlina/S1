@@ -366,7 +366,7 @@ h3{color:#2d2d2d;font-size:1.2em;margin:0;font-weight:normal}.emphasized-text{co
 .pagination{height:20px;width:150px;text-align:center}.pagination div{background-color:#B2B2B2;width:5px;height:5px;border-radius:5px;display:inline-block;margin:0 1px}
 .pagination .arrows{width:9px;height:9px;color:#ccc;font:11px AllrecipesMobileRegular;position:relative;top:3px}.pagination .left-arrow:before{content:"<"}
 .pagination .right-arrow:before{content:">"}.subheader{padding:5px;position:relative;overflow:hidden}
-.subheader h1{margin:0;color:#808080;font-size:1.2em;font-weight:bold;text-align:left;float:left;height:16px}.subheader .similar,select{position:absolute;top:5px;right:0;margin-right:10px}
+.subheader h1{margin:0;color:#808080;font-size:1.2em;font-weight:bold;text-align:left;float:left;height:30px}.subheader .similar,select{position:absolute;top:5px;right:0;margin-right:10px}
 .subheader select{width:67px;text-align:center;-webkit-appearance:none;display:table;border:1px solid #e6e6e6;border-radius:5px;color:#808080;height:33px;line-height:33px;cursor:pointer;overflow:visible}
 .subheader span{margin-left:5px;color:#b2b2b2;line-height:14px}.gallery-btns{position:relative;width:258px;margin:0 auto;text-align:center;padding-bottom:20px}
 .gallery-btns .button-reg.btn-back,.gallery-btns .button-reg.btn-snap{display:inline-block;height:45px;padding:0;line-height:20px;text-align:center}
