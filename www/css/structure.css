@@ -1,0 +1,37 @@
+ footer {
+          display:block;
+          position: fixed;
+          left:0;
+          right:0;
+          bottom:0;
+          height:35px;
+          overflow: hidden;
+        }
+
+    header{
+        display:block;
+        position: fixed;
+        left:0;
+        right:0;
+        top:0;
+        height:50px;
+        overflow: hidden;
+    }
+
+    section{
+        display:block;
+        position:fixed;
+        left:0;
+        top:50px;
+        bottom:0px;
+        right:0;
+        overflow: hidden;
+    }
+      body{
+          display:block;
+          position:fixed;
+          height:100%;
+          min-height:100%;
+          overflow: hidden;
+      }
+      
