@@ -11,12 +11,12 @@ body{margin:0;
           min-height:100%;
            position:fixed;}
 #header h1{margin:0;padding:0;text-indent:-5000px;float:left;}
-#header h1 a{text-decoration:none;width:80px;height:46px;display:block;background:url(../img/sprite_icons.png) no-repeat 8px 0;outline:none;}
-#nav{float:right;text-align:right;margin:0;padding:0 10px 0 0;}
+#header h1 a{text-decoration:none;width:80px;height:36px;display:block;background:url(../img/sprite_icons.png) no-repeat 8px 0;outline:none;}
+#nav{float:right;text-align:right;margin:0;padding:0 5px 0 0;}
 #nav li{list-style:none;float:left;margin-left:5px;padding:0 5px;}
 #nav li a{text-decoration:none;color:#a5a6a7;display:block;margin:0;padding:0;height:46px;font-size:11px;font-weight:bold;text-shadow:none;}
 
-#nav li a span{display:block;padding-top:30px;}
+#nav li a span{display:block;padding-top:40px;}
 #nav li#nav1{background:url(../img/sprite_icons.png) no-repeat 7px -36px;width:36px;}
 #nav li#nav2{background:url(../img/sprite_icons.png) no-repeat 5px -83px;width:36px;}
 /*#nav li#nav3{background:url(../img/sprite_iconss.png) no-repeat 0px -130px;width:36px;}*/
