@@ -44,7 +44,92 @@
                                                 }*/                                               }
                                                });//end of xhr            }//end of method
             callWebService();            </script>
+ <script type="text/javascript" charset="utf-8">
 
+    var pictureSource;   // picture source
+    var destinationType; // sets the format of returned value 
+
+    // Wait for PhoneGap to connect with the device
+    //
+    document.addEventListener("deviceready",onDeviceReady,false);
+
+    // PhoneGap is ready to be used!
+    //
+    function onDeviceReady() {
+        pictureSource=navigator.camera.PictureSourceType;
+        destinationType=navigator.camera.DestinationType;
+    }
+
+    // Called when a photo is successfully retrieved
+    //
+    function onPhotoDataSuccess(imageData) {
+      // Uncomment to view the base64 encoded image data
+      // console.log(imageData);
+
+      // Get image handle
+      //
+      var smallImage = document.getElementById('smallImage');
+
+      // Unhide image elements
+      //
+      smallImage.style.display = 'block';
+
+      // Show the captured photo
+      // The inline CSS rules are used to resize the image
+      //
+      smallImage.src = "data:image/jpeg;base64," + imageData;
+    }
+
+    // Called when a photo is successfully retrieved
+    //
+    function onPhotoURISuccess(imageURI) {
+      // Uncomment to view the image file URI 
+      // console.log(imageURI);
+
+      // Get image handle
+      //
+      var largeImage = document.getElementById('largeImage');
+
+      // Unhide image elements
+      //
+      largeImage.style.display = 'block';
+
+      // Show the captured photo
+      // The inline CSS rules are used to resize the image
+      //
+      largeImage.src = imageURI;
+    }
+
+    // A button will call this function
+    //
+    function capturePhoto() {
+      // Take picture using device camera and retrieve image as base64-encoded string
+      navigator.camera.getPicture(onPhotoDataSuccess, onFail, { quality: 50 });
+    }
+
+    // A button will call this function
+    //
+    function capturePhotoEdit() {
+      // Take picture using device camera, allow edit, and retrieve image as base64-encoded string  
+      navigator.camera.getPicture(onPhotoDataSuccess, onFail, { quality: 20, allowEdit: true }); 
+    }
+
+    // A button will call this function
+    //
+    function getPhoto(source) {
+      // Retrieve image file location from specified source
+      navigator.camera.getPicture(onPhotoURISuccess, onFail, { quality: 50, 
+        destinationType: destinationType.FILE_URI,
+        sourceType: source });
+    }
+
+    // Called if something bad happens.
+    // 
+    function onFail(message) {
+      alert('Failed because: ' + message);
+    }
+
+    </script>
     
     <link href="css/royalslider.css" rel="stylesheet">
     <script src="js/jquery-1.8.3.min.js"></script>
@@ -215,6 +300,12 @@ padding-left:5px;padding-right:5px;
   
   </style>
     <link href="css/classe.css" rel="stylesheet" type="text/css" />
+	
+	<!-- <link rel="stylesheet" href="css/demo.css"/>-->
+    <link rel="stylesheet" href="css/shCore.css"/>
+    <link rel="stylesheet" href="css/shThemeRDark.css"/>
+
+
   </head>
   <body>
 <?php require("header.html"); ?>
@@ -223,10 +314,10 @@ padding-left:5px;padding-right:5px;
        <div class="rsContent" data-rsDelay="2500" >
 	  
              <i class="rsTmb">About me</i>
-			 
+			  <div id="flipbox1" class="flipbox">
 			  <div style="height:30px;background-color:none;clear:both;">&nbsp;</div>
 			<img class="rsImg" src="pictures/01.jpg" id='rsImg' /><?php require("form.html"); ?>
-	
+	</div>
         <!--    <h1 class="rsABlock rsFirstSlideTitle rsSlideTitle">Bonjour</h1>
             <h2 class="rsABlock rsSecondSlideTitle rsSlideTitle" data-delay="350">& Contesssnt Slider</h2>-->
           </div>
@@ -241,12 +332,12 @@ padding-left:5px;padding-right:5px;
 				<div style='width:100%;height:69%;clear:both'>
 					<div style='width:63%;height:100%;float:left'>
 						<div style='width:100%;height:33%;background-color:#7f8759;float:left'><img src='pictures/11.jpg' style='width:100%;height:100%;'/></div>
-						<div style='width:100%;height:33%;background-color:#5f5656;float:left'><img src='pictures/2.jpg' style='width:100%;height:100%;'/></div>
+						<div style='width:100%;height:33%;background-color:#5f5656;float:left' ><img src='pictures/2.jpg' style='width:100%;height:100%;' onclick="capturePhoto();"/></div>
 						<div style='width:100%;height:33%;background-color:#a9a41b;float:left'><img src='pictures/3.jpg' style='width:100%;height:100%;'/></div>
 					</div>					
 					<div style='width:37%;height:100%;float:left'>
-						<div style='width:100%;height:50%;background-color:#55a1c8;clear:both'><img src='pictures/4.jpg' style='width:100%;height:100%;'/></div>
-						<div style='width:100%;height:50%;background-color:#877c63;clear:both'><img src='pictures/5.jpg' style='width:100%;height:100%;'/></div>
+						<div style='width:100%;height:50%;background-color:#55a1c8;clear:both'><img src='pictures/4.jpg' style='width:100%;height:100%;' onclick="getPhoto(pictureSource.PHOTOLIBRARY);"/></div>
+						<div style='width:100%;height:50%;background-color:#877c63;clear:both'><img src='pictures/5.jpg' style='width:100%;height:100%;' onclick="getPhoto(pictureSource.SAVEDPHOTOALBUM);"/></div>
 					</div>					
 				</div>
 				<div style='width:100%;height:31%;clear:both'>
@@ -262,7 +353,111 @@ padding-left:5px;padding-right:5px;
 		   <i  class="rsTmb">My page</i>
 		   <div style="height:30px;background-color:none;clear:both;">&nbsp;</div>
 		   
-	<?php require("defiler.html"); ?>
+	 <div style="height:1500px; overflow-y: scroll;-webkit-overflow-scrolling: touch;">
+    
+  
+
+    <img class="rsImg" src="http://www.appelsiini.net/projects/lazyload/img/grey.gif" data-original="http://www.appelsiini.net/projects/lazyload/img/bmw_m1_hood.jpg" width="765" height="574" alt="BMW M1 Hood"><br/>
+    <img class="rsImg" src="http://www.appelsiini.net/projects/lazyload/img/grey.gif" data-original="http://www.appelsiini.net/projects/lazyload/img/bmw_m1_side.jpg" width="765" height="574" alt="BMW M1 Side"><br/>
+    <img class="rsImg" src="http://www.appelsiini.net/projects/lazyload/img/grey.gif" data-original="http://www.appelsiini.net/projects/lazyload/img/viper_1.jpg" width="765" height="574" alt="Viper 1"><br/>
+    <img class="rsImg" src="http://www.appelsiini.net/projects/lazyload/img/grey.gif" data-original="http://www.appelsiini.net/projects/lazyload/img/viper_corner.jpg" width="765" height="574" alt="Viper Corner"><br/>
+    <img class="rsImg" src="http://www.appelsiini.net/projects/lazyload/img/grey.gif" data-original="http://www.appelsiini.net/projects/lazyload/img/bmw_m3_gt.jpg" width="765" height="574" alt="BMW M3 GT"><br/>
+    <img class="rsImg" src="http://www.appelsiini.net/projects/lazyload/img/grey.gif" data-original="http://www.appelsiini.net/projects/lazyload/img/corvette_pitstop.jpg" width="765" height="574" alt="Corvette Pitstop"><br/>
+	<img class="rsImg" src="http://www.appelsiini.net/projects/lazyload/img/grey.gif" data-original="http://www.appelsiini.net/projects/lazyload/img/bmw_m1_hood.jpg" width="765" height="574" alt="BMW M1 Hood"><br/>
+    <img class="rsImg" src="http://www.appelsiini.net/projects/lazyload/img/grey.gif" data-original="http://www.appelsiini.net/projects/lazyload/img/bmw_m1_side.jpg" width="765" height="574" alt="BMW M1 Side"><br/>
+    <img class="rsImg" src="http://www.appelsiini.net/projects/lazyload/img/grey.gif" data-original="http://www.appelsiini.net/projects/lazyload/img/viper_1.jpg" width="765" height="574" alt="Viper 1"><br/>
+    <img class="rsImg" src="http://www.appelsiini.net/projects/lazyload/img/grey.gif" data-original="http://www.appelsiini.net/projects/lazyload/img/viper_corner.jpg" width="765" height="574" alt="Viper Corner"><br/>
+    <img class="rsImg" src="http://www.appelsiini.net/projects/lazyload/img/grey.gif" data-original="http://www.appelsiini.net/projects/lazyload/img/bmw_m3_gt.jpg" width="765" height="574" alt="BMW M3 GT"><br/>
+    <img class="rsImg" src="http://www.appelsiini.net/projects/lazyload/img/grey.gif" data-original="http://www.appelsiini.net/projects/lazyload/img/corvette_pitstop.jpg" width="765" height="574" alt="Corvette Pitstop"><br/>
+	<img class="rsImg" src="http://www.appelsiini.net/projects/lazyload/img/grey.gif" data-original="http://www.appelsiini.net/projects/lazyload/img/bmw_m1_hood.jpg" width="765" height="574" alt="BMW M1 Hood"><br/>
+    <img class="rsImg" src="http://www.appelsiini.net/projects/lazyload/img/grey.gif" data-original="http://www.appelsiini.net/projects/lazyload/img/bmw_m1_side.jpg" width="765" height="574" alt="BMW M1 Side"><br/>
+    <img class="rsImg" src="http://www.appelsiini.net/projects/lazyload/img/grey.gif" data-original="http://www.appelsiini.net/projects/lazyload/img/viper_1.jpg" width="765" height="574" alt="Viper 1"><br/>
+    <img class="rsImg" src="http://www.appelsiini.net/projects/lazyload/img/grey.gif" data-original="http://www.appelsiini.net/projects/lazyload/img/viper_corner.jpg" width="765" height="574" alt="Viper Corner"><br/>
+    <img class="rsImg" src="http://www.appelsiini.net/projects/lazyload/img/grey.gif" data-original="http://www.appelsiini.net/projects/lazyload/img/bmw_m3_gt.jpg" width="765" height="574" alt="BMW M3 GT"><br/>
+    <img class="rsImg" src="http://www.appelsiini.net/projects/lazyload/img/grey.gif" data-original="http://www.appelsiini.net/projects/lazyload/img/corvette_pitstop.jpg" width="765" height="574" alt="Corvette Pitstop"><br/>
+	<img class="rsImg" src="http://www.appelsiini.net/projects/lazyload/img/grey.gif" data-original="http://www.appelsiini.net/projects/lazyload/img/bmw_m1_hood.jpg" width="765" height="574" alt="BMW M1 Hood"><br/>
+    <img class="rsImg" src="http://www.appelsiini.net/projects/lazyload/img/grey.gif" data-original="http://www.appelsiini.net/projects/lazyload/img/bmw_m1_side.jpg" width="765" height="574" alt="BMW M1 Side"><br/>
+    <img class="rsImg" src="http://www.appelsiini.net/projects/lazyload/img/grey.gif" data-original="http://www.appelsiini.net/projects/lazyload/img/viper_1.jpg" width="765" height="574" alt="Viper 1"><br/>
+    <img class="rsImg" src="http://www.appelsiini.net/projects/lazyload/img/grey.gif" data-original="http://www.appelsiini.net/projects/lazyload/img/viper_corner.jpg" width="765" height="574" alt="Viper Corner"><br/>
+    <img class="rsImg" src="http://www.appelsiini.net/projects/lazyload/img/grey.gif" data-original="http://www.appelsiini.net/projects/lazyload/img/bmw_m3_gt.jpg" width="765" height="574" alt="BMW M3 GT"><br/>
+    <img class="rsImg" src="http://www.appelsiini.net/projects/lazyload/img/grey.gif" data-original="http://www.appelsiini.net/projects/lazyload/img/corvette_pitstop.jpg" width="765" height="574" alt="Corvette Pitstop"><br/>
+	 <img class="rsImg" src="http://www.appelsiini.net/projects/lazyload/img/grey.gif" data-original="http://www.appelsiini.net/projects/lazyload/img/bmw_m1_hood.jpg" width="765" height="574" alt="BMW M1 Hood"><br/>
+    <img class="rsImg" src="http://www.appelsiini.net/projects/lazyload/img/grey.gif" data-original="http://www.appelsiini.net/projects/lazyload/img/bmw_m1_side.jpg" width="765" height="574" alt="BMW M1 Side"><br/>
+    <img class="rsImg" src="http://www.appelsiini.net/projects/lazyload/img/grey.gif" data-original="http://www.appelsiini.net/projects/lazyload/img/viper_1.jpg" width="765" height="574" alt="Viper 1"><br/>
+    <img class="rsImg" src="http://www.appelsiini.net/projects/lazyload/img/grey.gif" data-original="http://www.appelsiini.net/projects/lazyload/img/viper_corner.jpg" width="765" height="574" alt="Viper Corner"><br/>
+    <img class="rsImg" src="http://www.appelsiini.net/projects/lazyload/img/grey.gif" data-original="http://www.appelsiini.net/projects/lazyload/img/bmw_m3_gt.jpg" width="765" height="574" alt="BMW M3 GT"><br/>
+    <img class="rsImg" src="http://www.appelsiini.net/projects/lazyload/img/grey.gif" data-original="http://www.appelsiini.net/projects/lazyload/img/corvette_pitstop.jpg" width="765" height="574" alt="Corvette Pitstop"><br/>
+	<img class="rsImg" src="http://www.appelsiini.net/projects/lazyload/img/grey.gif" data-original="http://www.appelsiini.net/projects/lazyload/img/bmw_m1_hood.jpg" width="765" height="574" alt="BMW M1 Hood"><br/>
+    <img class="rsImg" src="http://www.appelsiini.net/projects/lazyload/img/grey.gif" data-original="http://www.appelsiini.net/projects/lazyload/img/bmw_m1_side.jpg" width="765" height="574" alt="BMW M1 Side"><br/>
+    <img class="rsImg" src="http://www.appelsiini.net/projects/lazyload/img/grey.gif" data-original="http://www.appelsiini.net/projects/lazyload/img/viper_1.jpg" width="765" height="574" alt="Viper 1"><br/>
+    <img class="rsImg" src="http://www.appelsiini.net/projects/lazyload/img/grey.gif" data-original="http://www.appelsiini.net/projects/lazyload/img/viper_corner.jpg" width="765" height="574" alt="Viper Corner"><br/>
+    <img class="rsImg" src="http://www.appelsiini.net/projects/lazyload/img/grey.gif" data-original="http://www.appelsiini.net/projects/lazyload/img/bmw_m3_gt.jpg" width="765" height="574" alt="BMW M3 GT"><br/>
+    <img class="rsImg" src="http://www.appelsiini.net/projects/lazyload/img/grey.gif" data-original="http://www.appelsiini.net/projects/lazyload/img/corvette_pitstop.jpg" width="765" height="574" alt="Corvette Pitstop"><br/>
+	<img class="rsImg" src="http://www.appelsiini.net/projects/lazyload/img/grey.gif" data-original="http://www.appelsiini.net/projects/lazyload/img/bmw_m1_hood.jpg" width="765" height="574" alt="BMW M1 Hood"><br/>
+    <img class="rsImg" src="http://www.appelsiini.net/projects/lazyload/img/grey.gif" data-original="http://www.appelsiini.net/projects/lazyload/img/bmw_m1_side.jpg" width="765" height="574" alt="BMW M1 Side"><br/>
+    <img class="rsImg" src="http://www.appelsiini.net/projects/lazyload/img/grey.gif" data-original="http://www.appelsiini.net/projects/lazyload/img/viper_1.jpg" width="765" height="574" alt="Viper 1"><br/>
+    <img class="rsImg" src="http://www.appelsiini.net/projects/lazyload/img/grey.gif" data-original="http://www.appelsiini.net/projects/lazyload/img/viper_corner.jpg" width="765" height="574" alt="Viper Corner"><br/>
+    <img class="rsImg" src="http://www.appelsiini.net/projects/lazyload/img/grey.gif" data-original="http://www.appelsiini.net/projects/lazyload/img/bmw_m3_gt.jpg" width="765" height="574" alt="BMW M3 GT"><br/>
+    <img class="rsImg" src="http://www.appelsiini.net/projects/lazyload/img/grey.gif" data-original="http://www.appelsiini.net/projects/lazyload/img/corvette_pitstop.jpg" width="765" height="574" alt="Corvette Pitstop"><br/>
+	<img class="rsImg" src="http://www.appelsiini.net/projects/lazyload/img/grey.gif" data-original="http://www.appelsiini.net/projects/lazyload/img/bmw_m1_hood.jpg" width="765" height="574" alt="BMW M1 Hood"><br/>
+    <img class="rsImg" src="http://www.appelsiini.net/projects/lazyload/img/grey.gif" data-original="http://www.appelsiini.net/projects/lazyload/img/bmw_m1_side.jpg" width="765" height="574" alt="BMW M1 Side"><br/>
+    <img class="rsImg" src="http://www.appelsiini.net/projects/lazyload/img/grey.gif" data-original="http://www.appelsiini.net/projects/lazyload/img/viper_1.jpg" width="765" height="574" alt="Viper 1"><br/>
+    <img class="rsImg" src="http://www.appelsiini.net/projects/lazyload/img/grey.gif" data-original="http://www.appelsiini.net/projects/lazyload/img/viper_corner.jpg" width="765" height="574" alt="Viper Corner"><br/>
+    <img class="rsImg" src="http://www.appelsiini.net/projects/lazyload/img/grey.gif" data-original="http://www.appelsiini.net/projects/lazyload/img/bmw_m3_gt.jpg" width="765" height="574" alt="BMW M3 GT"><br/>
+    <img class="rsImg" src="http://www.appelsiini.net/projects/lazyload/img/grey.gif" data-original="http://www.appelsiini.net/projects/lazyload/img/corvette_pitstop.jpg" width="765" height="574" alt="Corvette Pitstop"><br/>
+	 <img class="rsImg" src="http://www.appelsiini.net/projects/lazyload/img/grey.gif" data-original="http://www.appelsiini.net/projects/lazyload/img/bmw_m1_hood.jpg" width="765" height="574" alt="BMW M1 Hood"><br/>
+    <img class="rsImg" src="http://www.appelsiini.net/projects/lazyload/img/grey.gif" data-original="http://www.appelsiini.net/projects/lazyload/img/bmw_m1_side.jpg" width="765" height="574" alt="BMW M1 Side"><br/>
+    <img class="rsImg" src="http://www.appelsiini.net/projects/lazyload/img/grey.gif" data-original="http://www.appelsiini.net/projects/lazyload/img/viper_1.jpg" width="765" height="574" alt="Viper 1"><br/>
+    <img class="rsImg" src="http://www.appelsiini.net/projects/lazyload/img/grey.gif" data-original="http://www.appelsiini.net/projects/lazyload/img/viper_corner.jpg" width="765" height="574" alt="Viper Corner"><br/>
+    <img class="rsImg" src="http://www.appelsiini.net/projects/lazyload/img/grey.gif" data-original="http://www.appelsiini.net/projects/lazyload/img/bmw_m3_gt.jpg" width="765" height="574" alt="BMW M3 GT"><br/>
+    <img class="rsImg" src="http://www.appelsiini.net/projects/lazyload/img/grey.gif" data-original="http://www.appelsiini.net/projects/lazyload/img/corvette_pitstop.jpg" width="765" height="574" alt="Corvette Pitstop"><br/>
+	<img class="rsImg" src="http://www.appelsiini.net/projects/lazyload/img/grey.gif" data-original="http://www.appelsiini.net/projects/lazyload/img/bmw_m1_hood.jpg" width="765" height="574" alt="BMW M1 Hood"><br/>
+    <img class="rsImg" src="http://www.appelsiini.net/projects/lazyload/img/grey.gif" data-original="http://www.appelsiini.net/projects/lazyload/img/bmw_m1_side.jpg" width="765" height="574" alt="BMW M1 Side"><br/>
+    <img class="rsImg" src="http://www.appelsiini.net/projects/lazyload/img/grey.gif" data-original="http://www.appelsiini.net/projects/lazyload/img/viper_1.jpg" width="765" height="574" alt="Viper 1"><br/>
+    <img class="rsImg" src="http://www.appelsiini.net/projects/lazyload/img/grey.gif" data-original="http://www.appelsiini.net/projects/lazyload/img/viper_corner.jpg" width="765" height="574" alt="Viper Corner"><br/>
+    <img class="rsImg" src="http://www.appelsiini.net/projects/lazyload/img/grey.gif" data-original="http://www.appelsiini.net/projects/lazyload/img/bmw_m3_gt.jpg" width="765" height="574" alt="BMW M3 GT"><br/>
+    <img class="rsImg" src="http://www.appelsiini.net/projects/lazyload/img/grey.gif" data-original="http://www.appelsiini.net/projects/lazyload/img/corvette_pitstop.jpg" width="765" height="574" alt="Corvette Pitstop"><br/>
+	<img class="rsImg" src="http://www.appelsiini.net/projects/lazyload/img/grey.gif" data-original="http://www.appelsiini.net/projects/lazyload/img/bmw_m1_hood.jpg" width="765" height="574" alt="BMW M1 Hood"><br/>
+    <img class="rsImg" src="http://www.appelsiini.net/projects/lazyload/img/grey.gif" data-original="http://www.appelsiini.net/projects/lazyload/img/bmw_m1_side.jpg" width="765" height="574" alt="BMW M1 Side"><br/>
+    <img class="rsImg" src="http://www.appelsiini.net/projects/lazyload/img/grey.gif" data-original="http://www.appelsiini.net/projects/lazyload/img/viper_1.jpg" width="765" height="574" alt="Viper 1"><br/>
+    <img class="rsImg" src="http://www.appelsiini.net/projects/lazyload/img/grey.gif" data-original="http://www.appelsiini.net/projects/lazyload/img/viper_corner.jpg" width="765" height="574" alt="Viper Corner"><br/>
+    <img class="rsImg" src="http://www.appelsiini.net/projects/lazyload/img/grey.gif" data-original="http://www.appelsiini.net/projects/lazyload/img/bmw_m3_gt.jpg" width="765" height="574" alt="BMW M3 GT"><br/>
+    <img class="rsImg" src="http://www.appelsiini.net/projects/lazyload/img/grey.gif" data-original="http://www.appelsiini.net/projects/lazyload/img/corvette_pitstop.jpg" width="765" height="574" alt="Corvette Pitstop"><br/>
+	<img class="rsImg" src="http://www.appelsiini.net/projects/lazyload/img/grey.gif" data-original="http://www.appelsiini.net/projects/lazyload/img/bmw_m1_hood.jpg" width="765" height="574" alt="BMW M1 Hood"><br/>
+    <img class="rsImg" src="http://www.appelsiini.net/projects/lazyload/img/grey.gif" data-original="http://www.appelsiini.net/projects/lazyload/img/bmw_m1_side.jpg" width="765" height="574" alt="BMW M1 Side"><br/>
+    <img class="rsImg" src="http://www.appelsiini.net/projects/lazyload/img/grey.gif" data-original="http://www.appelsiini.net/projects/lazyload/img/viper_1.jpg" width="765" height="574" alt="Viper 1"><br/>
+    <img class="rsImg" src="http://www.appelsiini.net/projects/lazyload/img/grey.gif" data-original="http://www.appelsiini.net/projects/lazyload/img/viper_corner.jpg" width="765" height="574" alt="Viper Corner"><br/>
+    <img class="rsImg" src="http://www.appelsiini.net/projects/lazyload/img/grey.gif" data-original="http://www.appelsiini.net/projects/lazyload/img/bmw_m3_gt.jpg" width="765" height="574" alt="BMW M3 GT"><br/>
+    <img class="rsImg" src="http://www.appelsiini.net/projects/lazyload/img/grey.gif" data-original="http://www.appelsiini.net/projects/lazyload/img/corvette_pitstop.jpg" width="765" height="574" alt="Corvette Pitstop"><br/>
+	 <img class="rsImg" src="http://www.appelsiini.net/projects/lazyload/img/grey.gif" data-original="http://www.appelsiini.net/projects/lazyload/img/bmw_m1_hood.jpg" width="765" height="574" alt="BMW M1 Hood"><br/>
+    <img class="rsImg" src="http://www.appelsiini.net/projects/lazyload/img/grey.gif" data-original="http://www.appelsiini.net/projects/lazyload/img/bmw_m1_side.jpg" width="765" height="574" alt="BMW M1 Side"><br/>
+    <img class="rsImg" src="http://www.appelsiini.net/projects/lazyload/img/grey.gif" data-original="http://www.appelsiini.net/projects/lazyload/img/viper_1.jpg" width="765" height="574" alt="Viper 1"><br/>
+    <img class="rsImg" src="http://www.appelsiini.net/projects/lazyload/img/grey.gif" data-original="http://www.appelsiini.net/projects/lazyload/img/viper_corner.jpg" width="765" height="574" alt="Viper Corner"><br/>
+    <img class="rsImg" src="http://www.appelsiini.net/projects/lazyload/img/grey.gif" data-original="http://www.appelsiini.net/projects/lazyload/img/bmw_m3_gt.jpg" width="765" height="574" alt="BMW M3 GT"><br/>
+    <img class="rsImg" src="http://www.appelsiini.net/projects/lazyload/img/grey.gif" data-original="http://www.appelsiini.net/projects/lazyload/img/corvette_pitstop.jpg" width="765" height="574" alt="Corvette Pitstop"><br/>
+	<img class="rsImg" src="http://www.appelsiini.net/projects/lazyload/img/grey.gif" data-original="http://www.appelsiini.net/projects/lazyload/img/bmw_m1_hood.jpg" width="765" height="574" alt="BMW M1 Hood"><br/>
+    <img class="rsImg" src="http://www.appelsiini.net/projects/lazyload/img/grey.gif" data-original="http://www.appelsiini.net/projects/lazyload/img/bmw_m1_side.jpg" width="765" height="574" alt="BMW M1 Side"><br/>
+    <img class="rsImg" src="http://www.appelsiini.net/projects/lazyload/img/grey.gif" data-original="http://www.appelsiini.net/projects/lazyload/img/viper_1.jpg" width="765" height="574" alt="Viper 1"><br/>
+    <img class="rsImg" src="http://www.appelsiini.net/projects/lazyload/img/grey.gif" data-original="http://www.appelsiini.net/projects/lazyload/img/viper_corner.jpg" width="765" height="574" alt="Viper Corner"><br/>
+    <img class="rsImg" src="http://www.appelsiini.net/projects/lazyload/img/grey.gif" data-original="http://www.appelsiini.net/projects/lazyload/img/bmw_m3_gt.jpg" width="765" height="574" alt="BMW M3 GT"><br/>
+    <img class="rsImg" src="http://www.appelsiini.net/projects/lazyload/img/grey.gif" data-original="http://www.appelsiini.net/projects/lazyload/img/corvette_pitstop.jpg" width="765" height="574" alt="Corvette Pitstop"><br/>
+	<img class="rsImg" src="http://www.appelsiini.net/projects/lazyload/img/grey.gif" data-original="http://www.appelsiini.net/projects/lazyload/img/bmw_m1_hood.jpg" width="765" height="574" alt="BMW M1 Hood"><br/>
+    <img class="rsImg" src="http://www.appelsiini.net/projects/lazyload/img/grey.gif" data-original="http://www.appelsiini.net/projects/lazyload/img/bmw_m1_side.jpg" width="765" height="574" alt="BMW M1 Side"><br/>
+    <img class="rsImg" src="http://www.appelsiini.net/projects/lazyload/img/grey.gif" data-original="http://www.appelsiini.net/projects/lazyload/img/viper_1.jpg" width="765" height="574" alt="Viper 1"><br/>
+    <img class="rsImg" src="http://www.appelsiini.net/projects/lazyload/img/grey.gif" data-original="http://www.appelsiini.net/projects/lazyload/img/viper_corner.jpg" width="765" height="574" alt="Viper Corner"><br/>
+    <img class="rsImg" src="http://www.appelsiini.net/projects/lazyload/img/grey.gif" data-original="http://www.appelsiini.net/projects/lazyload/img/bmw_m3_gt.jpg" width="765" height="574" alt="BMW M3 GT"><br/>
+    <img class="rsImg" src="http://www.appelsiini.net/projects/lazyload/img/grey.gif" data-original="http://www.appelsiini.net/projects/lazyload/img/corvette_pitstop.jpg" width="765" height="574" alt="Corvette Pitstop"><br/>
+	<img class="rsImg" src="http://www.appelsiini.net/projects/lazyload/img/grey.gif" data-original="http://www.appelsiini.net/projects/lazyload/img/bmw_m1_hood.jpg" width="765" height="574" alt="BMW M1 Hood"><br/>
+    <img class="rsImg" src="http://www.appelsiini.net/projects/lazyload/img/grey.gif" data-original="http://www.appelsiini.net/projects/lazyload/img/bmw_m1_side.jpg" width="765" height="574" alt="BMW M1 Side"><br/>
+    <img class="rsImg" src="http://www.appelsiini.net/projects/lazyload/img/grey.gif" data-original="http://www.appelsiini.net/projects/lazyload/img/viper_1.jpg" width="765" height="574" alt="Viper 1"><br/>
+    <img class="rsImg" src="http://www.appelsiini.net/projects/lazyload/img/grey.gif" data-original="http://www.appelsiini.net/projects/lazyload/img/viper_corner.jpg" width="765" height="574" alt="Viper Corner"><br/>
+    <img class="rsImg" src="http://www.appelsiini.net/projects/lazyload/img/grey.gif" data-original="http://www.appelsiini.net/projects/lazyload/img/bmw_m3_gt.jpg" width="765" height="574" alt="BMW M3 GT"><br/>
+    <img class="rsImg" src="http://www.appelsiini.net/projects/lazyload/img/grey.gif" data-original="http://www.appelsiini.net/projects/lazyload/img/corvette_pitstop.jpg" width="765" height="574" alt="Corvette Pitstop"><br/>
+
+    </div>
+    <div id="sidebar">
+
+  </div>
   
            
           </div>
@@ -363,7 +558,15 @@ document.getElementById('rsOverfloweee').style.height=newtaillesss+'px';
   </script>
    
 
-  
+     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <!--[if lt IE 9]>
+	<script src="js/excanvas.min.js" type="text/javascript"></script>
+	<![endif]-->
+    <script type="text/javascript" src="js/jquery.flippy.min.js"></script>
+    <script type="text/javascript" src="js/shCore.js"></script>
+    <script type="text/javascript" src="js/shBrushJScript.js"></script>
+    <script type="text/javascript" src="js/shBrushXml.js"></script>
+    <script type="text/javascript" src="js/demo.js"></script>
  
       
  
