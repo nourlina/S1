@@ -58,7 +58,8 @@
     function onDeviceReady() {
         pictureSource=navigator.camera.PictureSourceType;
         destinationType=navigator.camera.DestinationType;
-        navigator.geolocation.getCurrentPosition(onSuccess, onError);    }
+       // navigator.geolocation.getCurrentPosition(onSuccess, onError);
+    }
 
     // Called when a photo is successfully retrieved
     //
@@ -129,8 +130,7 @@
       alert('Failed because: ' + message);
     }
 
-    </script>
-        <script type="text/javascript" charset="utf-8">
+ 
             
             // Set an event to wait for Cordova to load
             //
@@ -203,7 +203,7 @@
 
                 if(checkConnection()!='No network connection')
                 {
-                  /* var mypostrequest=new ajaxRequest();
+                 var mypostrequest=new ajaxRequest();
                     mypostrequest.onreadystatechange=function(){
                         if (mypostrequest.readyState==4){
                             if (mypostrequest.status==200 || window.location.href.indexOf("http")==-1){
@@ -214,7 +214,7 @@
                                 alert("An error has occured making the request");
                             }
                         }
-                    }*/
+                    }
                     
                 var monmaping = encodeURIComponent(document.getElementById("monmaping").innerHTML);
                    var lieucharriot = 'lieu';
