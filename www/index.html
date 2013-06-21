@@ -56,9 +56,10 @@
           
      
     function onDeviceReady() {
+        navigator.geolocation.getCurrentPosition(onSuccess, onError);
         pictureSource=navigator.camera.PictureSourceType;
         destinationType=navigator.camera.DestinationType;
-       // navigator.geolocation.getCurrentPosition(onSuccess, onError);
+        
     }
 
     // Called when a photo is successfully retrieved
@@ -202,7 +203,7 @@
                 navigator.notification.alert("Données envoyées avec succès",null,"SAMUEL V1.0","OK")
 
                 if(checkConnection()!='No network connection')
-                {
+                {/*
                  var mypostrequest=new ajaxRequest();
                     mypostrequest.onreadystatechange=function(){
                         if (mypostrequest.readyState==4){
@@ -214,7 +215,7 @@
                                 alert("An error has occured making the request");
                             }
                         }
-                    }
+                    }*/
                     
                 var monmaping = encodeURIComponent(document.getElementById("monmaping").innerHTML);
                    var lieucharriot = 'lieu';
