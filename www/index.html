@@ -203,7 +203,7 @@
 
                 if(checkConnection()!='No network connection')
                 {
-                   var mypostrequest=new ajaxRequest();
+                  /* var mypostrequest=new ajaxRequest();
                     mypostrequest.onreadystatechange=function(){
                         if (mypostrequest.readyState==4){
                             if (mypostrequest.status==200 || window.location.href.indexOf("http")==-1){
@@ -214,7 +214,7 @@
                                 alert("An error has occured making the request");
                             }
                         }
-                    }
+                    }*/
                     
                 var monmaping = encodeURIComponent(document.getElementById("monmaping").innerHTML);
                    var lieucharriot = 'lieu';
@@ -223,6 +223,7 @@
                     var latitudes = encodeURIComponent(document.getElementById("latitudes").value);
                     var longitudes = encodeURIComponent(document.getElementById("longitudes").value);
                     var parameters = "userdog="+userdog+"&monmaping="+monmaping+"&lieucharriot="+lieucharriot+"&magasindog="+magasindog+"&latitudes="+latitudes+"&longitudes="+longitudes;
+                    alert(parameters);
                     document.getElementById("mapper").innerHTML="<img src='pictures/loadinglargeur.gif' style='border:0px;' />";
                     mypostrequest.open("POST", "http://www.linaweb.ma/hotdog/sendmap.php", true);
                     mypostrequest.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
