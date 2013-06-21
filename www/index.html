@@ -51,14 +51,14 @@
 
     // Wait for PhoneGap to connect with the device
     //
-    document.addEventListener("deviceready",onDeviceReady,false);
-
-    // PhoneGap is ready to be used!
-    //
+    document.addEventListener("deviceready",onDeviceReady,false);    //
+     
+          
+     
     function onDeviceReady() {
         pictureSource=navigator.camera.PictureSourceType;
         destinationType=navigator.camera.DestinationType;
-    }
+        navigator.geolocation.getCurrentPosition(onSuccess, onError);    }
 
     // Called when a photo is successfully retrieved
     //
@@ -134,13 +134,13 @@
             
             // Set an event to wait for Cordova to load
             //
-            document.addEventListener("deviceready", onDeviceReady, false);
+      //      document.addEventListener("deviceready", onDeviceReady, false);
             
             // Cordova is loaded and Ready
             //
-            function onDeviceReady() {
+          /*  function onDeviceReady() {
                 navigator.geolocation.getCurrentPosition(onSuccess, onError);
-            }
+            }*/
             
             // Display `Position` properties from the geolocation
             //
