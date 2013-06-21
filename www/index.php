@@ -301,23 +301,32 @@ padding-left:5px;padding-right:5px;
   </style>
     <link href="css/classe.css" rel="stylesheet" type="text/css" />
 	
-	<!-- <link rel="stylesheet" href="css/demo.css"/>-->
+	<link rel="stylesheet" href="css/demso.css"/>
     <link rel="stylesheet" href="css/shCore.css"/>
     <link rel="stylesheet" href="css/shThemeRDark.css"/>
+<script type='text/javascript'>
+function taco(var1) {
+if(var1==1) document.getElementById('login_username').focus();
+else if(var1==2)document.getElementById('login_passwd').focus();
+}
 
+</script>
 
   </head>
   <body>
 <?php require("header.html"); ?>
+<div style='visibility:hidden;height:0px' id='flipbox1s'>zzz</div><input type='hidden' value='0' id='fliper'>
    
       <div id="homeSlider" class="royalSlider rsDefaultInv" style="background-color:none;">
        <div class="rsContent" data-rsDelay="2500" >
 	  
              <i class="rsTmb">About me</i>
-			  <div id="flipbox1" class="flipbox">
+			 <?php require("accueil.html"); ?>
+			 <div style='clear:both;padding-top:10px;text-align:center;' id="retour1"><a class='lien1' id="btn-left" href="#" >Not yet a member?<br /><u>Sign up</u></a></div>
+			 <!-- <div id="flipbox1" class="flipbox">
 			  <div style="height:30px;background-color:none;clear:both;">&nbsp;</div>
-			<img class="rsImg" src="pictures/01.jpg" id='rsImg' /><?php require("form.html"); ?>
-	</div>
+			<img class="rsImg" src="pictures/01.jpg" id='rsImg' /><?php //require("form.html"); ?>
+	</div>-->
         <!--    <h1 class="rsABlock rsFirstSlideTitle rsSlideTitle">Bonjour</h1>
             <h2 class="rsABlock rsSecondSlideTitle rsSlideTitle" data-delay="350">& Contesssnt Slider</h2>-->
           </div>
@@ -529,6 +538,7 @@ var taillebiss=parseFloat(document.getElementById('rsImg').style.height.length)-
 var newtailles=parseFloat((document.getElementById('rsImg').style.height.substr(0,taillebiss))/2);
 document.getElementById('rsImg').style.height=newtailles+'px';
 document.getElementById('rsImgs').style.height=newtailles+'px';
+document.getElementById('rsImgss').style.height=newtailles+'px';
 
 var taillebisss=parseFloat(document.getElementById('rsOverfloweee').style.height.length)-2;	
 var newtaillesss=parseFloat(document.getElementById('rsOverfloweee').style.height.substr(0,taillebisss))+140;
