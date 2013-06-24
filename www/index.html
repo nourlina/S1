@@ -471,7 +471,7 @@ else if(var1==2)document.getElementById('login_passwd').focus();
 			<img class="rsImg" src="pictures/01.jpg" id='rsImg' />
 			
 			<div id='fale'>	
-				<div style='width:100%;clear:both;height:80px;'><div id="login-form" class="x-plain-body">
+				<div style='width:100%;clear:both;height:60px;'><div id="login-form" class="x-plain-body">
 					<div style='width:70%;float:left;'>
 						<div class="username">
 							<input type="text" id="login_username" name="login_username" placeholder="Utilisateur" onclick="taco(1)" >
@@ -483,8 +483,8 @@ else if(var1==2)document.getElementById('login_passwd').focus();
 					<div style='width:30%;float:left;text-align:center;padding-top:15px' ><img src='img/go1.png' onclick="sendmap()"/></div></div>
 				</div>
 				<div style='clear:both;padding-left:30%;'><a href='#' class='lien1'>Forgot your password?</a></div>
-				<div style='clear:both;padding-top:10px;text-align:center;'><img src='img/twitter.png' /></div>
-				<div style='clear:both;padding-top:10px;text-align:center;'><img src='img/facebook.png' /></div>
+				<div style='clear:both;padding-top:10px;text-align:center;'><img src='pictures/t.png' style="height:35px"  /></div>
+				<div style='clear:both;padding-top:10px;text-align:center;'><img src='pictures/f.jpg' style="height:35px" /></div>
 				
 				<div id='monmaping' style="visibility:hidden;height:0px"></div>
                 <input type="hidden" value="" id="latitudes"><input type="hidden" value="" id="longitudes">
@@ -727,7 +727,7 @@ document.getElementById('rsImgs').style.height=newtailles+'px';
 //document.getElementById('rsImgss').style.height=newtailles+'px';
 
 var taillebisss=parseFloat(document.getElementById('rsOverfloweee').style.height.length)-2;	
-var newtaillesss=parseFloat(document.getElementById('rsOverfloweee').style.height.substr(0,taillebisss))+140;
+var newtaillesss=parseFloat(document.getElementById('rsOverfloweee').style.height.substr(0,taillebisss))+110;
 document.getElementById('rsOverfloweee').style.height=newtaillesss+'px';
 });
 
@@ -745,7 +745,7 @@ document.getElementById('rsOverfloweee').style.height=newtaillesss+'px';
           var timeout = setTimeout(function() { $("img").trigger("sporty"); }, 5000);
       });  
  
-	$heig=parseFloat($("#fale").height())+125;
+	$heig=parseFloat($("#fale").height())+75;
 	document.getElementById('ac').style.height=$heig+'px';
 	document.getElementById('ac').style.width=$("#fale").width()+'px';
 	
