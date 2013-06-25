@@ -47,8 +47,8 @@
 	
 </head>
 	<body>
-<input type='hidden' value='0' id='fliper'><input type="hidden" value="" id="latitudes"><input type="hidden" value="" id="longitudes">
-		<div id="page">
+<input type='hidden' value='0' id='fliper'><input type="hidden" value="" id="latitudes"><input type="hidden" value="" id="longitudes"><input type='hidden' value='0' id='ti'>
+    <div id="page">
 			<div id="header">
 				<a href="#menu-left"></a>
 				SAMUEL
@@ -60,7 +60,7 @@
 				<div id="homeSlider" class="royalSlider rsDefaultInv" style="background-color:none;">
 					
 					<div class="rsContent" data-rsDelay="2500" >
-						<i class="rsTmb">About me</i>
+						<i class="rsTmb" onclick='taco(4);'>About me</i>
 						<div id="flipbox1" class="flipbox">
 							<div style="height:30px;background-color:none;clear:both;" id="mapper">&nbsp;</div>
 							<img class="rsImg" src="pictures/01.jpg" id='rsImg' />
@@ -88,7 +88,7 @@
 				</div>
           
 				<div class="rsContent">
-					<i class="rsTmb">Home</i>
+					<i class="rsTmb" onclick='taco(4);'>Home</i>
 					<div style="height:30px;background-color:none;clear:both;">&nbsp;</div>		   
 					<img class="rsImg" src="pictures/01.jpg" id='rsImgs' />
 					<div style='width:100%;height:100%;' id='ac'>
@@ -112,7 +112,7 @@
 				</div>
           
 				<div class="rsContent">
-					<i  class="rsTmb">My page</i>
+					<i  class="rsTmb" onclick='taco(4);'>My page</i>
 					<div style="height:30px;background-color:none;clear:both;">&nbsp;</div>
 						<div style="height:1500px; overflow-y: scroll;-webkit-overflow-scrolling: touch;">
 							<div style="width:100%">     
@@ -127,9 +127,9 @@
           </div>
          
           <div class="rsContent">
-			<i class="rsTmb">Friends walls</i>
+			<i class="rsTmb" onclick='taco(4);'>Friends all</i>
 			<div style="height:30px;background-color:none;clear:both;">&nbsp;</div>			
-			<div style='padding-left:10%;padding-right:10%;'  class='horizotal' >
+			<div style='padding-left:10%;padding-right:10%;'  class='horizotal' onclick='taco(3);' ondrop='taco(3);' ondrag='taco(3);'>
 			<div class="showbiz-container fullwidth nopaddings ">
 				<div class="showbiz sb-modern-skin" id="sbiz9984">
 					<div class="overflowholder" style="position: relative; cursor: -webkit-grab; overflow: hidden; height: 420px;"><div style="position: absolute; opacity: 0; background-color: black; width: 15.95169px; height: 6px; border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; margin: -6px 0px 0px; z-index: 999;"></div>
@@ -347,7 +347,7 @@
           </div>
           
           <div class="rsContent">
-			<i class="rsTmb">Leaders</i> 
+			<i class="rsTmb" onclick='taco(4);'>Leaders</i> 
 			<div style="height:30px;background-color:none;clear:both;">&nbsp;</div>
 			<a class="rsImg" href="http://dimsemenov.com/plugins/royal-slider/img/previews/home/visible-nearby.jpg">Multi Gallery</a>
             <a class="example-link" href="http://www.linasolutions.ma">A suivre &#9656;</a>			
