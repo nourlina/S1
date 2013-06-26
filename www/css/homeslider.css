@@ -14,12 +14,14 @@
   background-color:#fff;
 }
 .rsDefaultInv .rsThumb.rsNavSelected {
-  background: #fff;
-  color:#a0d52d;border-bottom:2px solid #a0d52d;
+  background-image:url(../pictures/petro.jpg);background-repeat:repeat-x;background-position:bottom center;
+  color:#001d3d;
+  /*border-bottom:2px solid #001d3d;*/
 }
 
 .rsDefaultInv .rsThumb.rsNavSelected i{
-  color:#a0d52d;border-bottom:1px solid #a0d52d;
+ /* background-image:url(../pictures/petro.jpg);background-repeat:repeat-x;background-position:bottom center;*/
+  color:#001d3d;
 }
 
 #homeSlider .example-link {
@@ -58,11 +60,11 @@
   -webkit-transform: translateZ(0);
 }
 #homeSlider .rsThumb {
-padding-left:5px;padding-right:5px;
+padding-left:3px;padding-right:3px;
   height: 30px;
   cursor: pointer;
   position:relative;
-  padding-top:-10px;color:#7e6510;
+  padding-top:-10px;color:#474441;font-weight:bold;
 }
 #homeSlider .rsTmb {
   text-align: center;
