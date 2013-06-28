@@ -17,7 +17,7 @@ $(function(){
          e.preventDefault();
 		 document.getElementById('fliper').value=0;
 		
-		   document.getElementById('btn-left').innerHTML="Not yet a member?<br /><u>Sign up</u>";
+		   document.getElementById('btn-left').innerHTML="Sign up";
 		  }
 		 else {
 		 document.getElementById('flipbox1s').innerHTML=document.getElementById('flipbox1').innerHTML;
@@ -26,7 +26,7 @@ $(function(){
             direction: "left",
             duration: "750",
            // verso: "<div style='width:100%;clear:both;padding-top:200px;'><div id='login-form' class='x-plain-body'><div style='width:70%;float:left;'><div class='username'><input type='text' id='login_username' name='login_username' placeholder='Utilisateur' onclick='taco(1)' ></div><div class='passwd'><input type='password' id='login_passwd' name='login_passwd' placeholder='Mot de passe' onclick='taco(2)'></div></div><div style='width:30%;float:left;text-align:center;padding-top:15px' ><img src='img/go1.png' /></div></div></div><div style='clear:both;padding-left:30%;'><a href='#' class='lien1'>Forgot your password?</a></div><div style='clear:both;padding-top:10px;text-align:center;'><img src='img/twitter.png' /></div><div style='clear:both;padding-top:10px;text-align:center;'><img src='img/facebook.png' /></div>",
-			verso: "<div style='height:343px; overflow-y: scroll;-webkit-overflow-scrolling: touch;'><div style='width:100%;clear:both;padding-top:20px;'><img src='pictures/profil.jpg' style='width:100%;height:100%;' /><img src='pictures/profil.jpg' style='width:100%;height:100%;' /></div></div>",
+			verso: "<div style='width:100%;clear:both;padding-top:40px;text-align:center'><div class='usernames'><input type='email' id='pseudo' name='pseudo' placeholder='Pseudo' onclick='taco(6)' ></div><div class='usernamess'><input type='email' id='email1' name='email1' placeholder='Adresse E-mail' onclick='taco(7)' ></div><div class='usernamess'><input type='password' id='passe1' name='passe1' placeholder='Mot de passe' onclick='taco(8)'></div><div class='dates'><input type='date' id='naissance1' name='naissance1' placeholder='XX/MM/AAAA' onclick='taco(9)' ></div><div style='padding-left:10%;padding-right:10%;height:30px;padding-top:10px'><div style='text-align:left;font-family:arial;font-size:12px;'><input type='checkbox' name='cdt' id='cdt' checked>&nbsp;&nbsp;<a href='#' class='lien1'>J'acc&egrave;pte les conditions g&eacute;n&eacute;rales</a></div></div><div style='padding-left:10%;padding-right:10%'><div class='button1' onclick='newclient()'>S'inscrire</div></div></div>",
          });
 		 document.getElementById('fliper').value=1;
 		  document.getElementById('btn-left').innerHTML="Retour";

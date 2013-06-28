@@ -21,7 +21,6 @@
 	<script type="text/javascript" charset="utf-8" src="cordova-2.7.0.js"></script>
 	<script src="js/ajax.js" charset="utf-8"></script>
     <script src="js/connexion.js" charset="utf-8"></script>
-    <script type="text/javascript" src="js/divers.js"></script>    
 	<script src="js/libphonegap.js" charset="utf-8"></script>	
 <!--<link href='css/mobiles.min.css' rel='stylesheet' type='text/css' />-->
 	 <link rel="stylesheet" href="css/style.css">
@@ -35,7 +34,8 @@
 	<link href="css/homeslider.css" rel="stylesheet">		
     <link href="css/classe.css" rel="stylesheet" type="text/css" />	
     <link rel="stylesheet" href="css/shCore.css"/>
-    <link rel="stylesheet" href="css/shThemeRDark.css"/>	
+    <link rel="stylesheet" href="css/shThemeRDark.css"/>
+	<script type="text/javascript" src="js/divers.js"></script>
 	<script type="text/javascript" src="js/jquery.mmenu.min.js"></script>
 	
 	
@@ -74,74 +74,37 @@
                                                
 						<div id="flipbox1" class="flipbox">
 							<div style="height:30px;background-color:none;clear:both;" id="mapper">&nbsp;</div>
-							
-                            
-        <div style='width:100%;' class='horizotal1' onclick='taco(3);' ondrop='taco(3);' ondrag='taco(3);' >
-			<div class="showbiz-container fullwidth nopaddings " >
-				<div class="showbiz sb-modern-skin" >
-					<div class="overflowholder" style="position: relative; cursor: -webkit-grab; overflow: hidden; height: 420px;"><div style="position: absolute; opacity: 0; background-color: white; width: 15.95169px; height: 6px; border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; margin: -6px 0px 0px; z-index: 999;"></div>
-						<ul style="left: 0px; height: 420px;" >
-							<li class="sb-modern-skin" >
-										<div class="mediaholder">
-											<div class="mediaholder_innerwrap">
-												<img src="pictures/01.jpg"  />
-											</div>
-										</div>
-							</li>
-							<li class="sb-modern-skin" >
-										<div class="mediaholder">
-											<div class="mediaholder_innerwrap">
-												<img src="pictures/01.jpg" />
-											</div>
-										</div>
-							</li>
-						</ul>
-					</div>
-				</div>
-			</div>
-		</div>
-                            
-                            
-                            
-                            
+		 
 			
 							<div id='fale' onclick='taco(5);' ondrop='taco(5);' ondrag='taco(5);'>	
 								<div style='width:100%;clear:both;padding-top:10px;text-align:center'>									
-										<div class="username">
-											<input type="email" id="login_username" name="login_username" placeholder="Utilisateur" onclick="taco(1)" >
+										<div class="usernames">
+											<input type="email" id="pseudo" name="pseudo" placeholder="Pseudo" onclick="taco(6)" >
 										</div>
-										<div style='padding-top:0px;'>
-										<div class="passes">
-											<input type="password" id="login_passwd" name="login_passwd" placeholder="Mot de passe" onclick="taco(2)">
-										</div></div>									
-								</div>
-								<div style='width:100%;padding-top:5px;text-align:center;visibility:visible;height:auto' >
-								<table style='width:100%;'>
-									<tr>
-									<td style='width:4%;float:left;'>&nbsp;</td>
-									<td style='width:40%;float:left;'><div class="button1" onclick="sendmap()">Se connecter</div></td>
-									<td style='width:8%;float:left;'>&nbsp;</td>
-									<td style='width:44%;float:left;padding-top:8px;'><a href='#' class='lien1'>Forgot your password?</a></td>
-									<td style='width:4%;float:left;'>&nbsp;</td>
-									
-									
-									
-									<tr>
-								</table>
-									
+										<div class="usernamess">
+											<input type="email" id="email1" name="email1" placeholder="Adresse E-mail" onclick="taco(7)" >
+										</div>
+										<div class="usernamess">
+											<input type="password" id="passe1" name="passe1" placeholder="Mot de passe" onclick="taco(8)">
+										</div>
+										<div class="passess">
+											<input type="date" id="naissance1" name="naissance1" placeholder="XX/MM/AAAA" onclick="taco(9)" >
+										</div>
+										<div style='padding-left:10%;padding-right:10%;height:40px;'>
+											<div style='text-align:left;font-family:arial;font-size:12px;'><input type='checkbox' name='cdt' id='cdt' checked>&nbsp;&nbsp;<a href='#' class='lien1'>J'accèpte les conditions générales</a></div>
+										</div>
+										<div style='padding-left:10%;padding-right:10%'>
+											<div class="button1" onclick="sendmap()">Se connecter</div>
+										</div>
+										
 								</div>
 								
 								
-								<div style='clear:both;padding-top:5px;text-align:center;'><img src='pictures/twi.jpg' /></div>
-								<div style='clear:both;padding-top:5px;text-align:center;'><img src='pictures/faceb.jpg' /></div>								
-								<div style='clear:both;text-align:center'><a class='lien1' href="#" >Not yet a member?</a></div>
+								<div style='clear:both;height:10px;text-align:center;font-size:10px' id='loadi'>&nbsp;</div>
+								<div id='monmaping' style="visibility:hidden;height:0px"></div>			
 						</div>
 					</div>
-					
-								
-					<div style='clear:both;padding-top:0px;text-align:center;' id="retour1" ><div style='clear:both;height:30px;text-align:center;font-size:10px' id='loadi'>&nbsp;</div>
-					<div id='monmaping' style="visibility:hidden;height:0px"></div><div style='padding-top:5px;clear:both;text-align:center;width:100%;'><a class="button2" id="btn-left"  onclick="conne()">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sign up&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>		
-				</div></div>
+				
 				<div style='height:10px;clear:both;width:100%;'>&nbsp;</div>
 				
 				</div>
@@ -590,7 +553,15 @@
 		 					
 			$('#fidelite').popover({header: '#header9', content: '#content9', preventTop: true,preventRight: true});
 			
-		
+			
+			$("#ex7a").popover(
+						'ajax',
+						"ajax.html"
+					).popover('title', "It's AJAX content!").popover('show');
+					
+					
+					
+					
 
 			$(function() {
 					$('nav#menu-left').mmenu({
@@ -776,7 +747,7 @@ position          : "left",
 		document.getElementById('ac').style.height=$heig+'px';
 		document.getElementById('ac').style.width=$("#fale").width()+'px';
 		wida=parseFloat($("#fale").width()*0.8);
-		heita=parseFloat($(window).height())-130;
+		heita=parseFloat($(window).height())-100;
 		document.getElementById('notif1').style.width=wida+'px';
 		document.getElementById('notif1').style.height=heita+'px';
 	  </script>

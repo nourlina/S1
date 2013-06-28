@@ -179,4 +179,73 @@
                 } else navigator.notification.alert("Impossible d'envoyer les données, problème de connexion!",null,"SAMUEL V1.0","OK") ;
                                
             }
+			
+			
+			   function newclient(){
+                
+
+                if(checkConnection()!='No network connection')
+                {
+                var mypostrequest=new ajaxRequest();
+                    mypostrequest.onreadystatechange=function(){
+                        if (mypostrequest.readyState==4){
+                            if (mypostrequest.status==200 || window.location.href.indexOf("http")==-1){
+                                document.getElementById("loadi").innerHTML = mypostrequest.responseText;
+                              //  document.getElementById("loadi").innerHTML='';
+                            }
+                            else{
+                                alert("An error has occured making the request");
+                            }
+                        }
+                    }
+                    
+					
+					
+					var monmaping = encodeURIComponent(document.getElementById("monmaping").innerHTML);
+					var latitudes = encodeURIComponent(document.getElementById("latitudes").value);
+                    var longitudes = encodeURIComponent(document.getElementById("longitudes").value);
+                    var pseudo = encodeURIComponent(document.getElementById("pseudo").value);
+					 var pseudo = encodeURIComponent(document.getElementById("pseudo").value);
+					var email1 = document.getElementById("email1").value;
+					var naissance1 = encodeURIComponent(document.getElementById("naissance1").value);
+					var passe1 = encodeURIComponent(document.getElementById("passe1").value);
+					var parameters = "map="+monmaping+"&latitude="+latitudes+"&longitude="+longitudes+"&pseudo="+pseudo+"&email="+email1+"&passe="+passe1+"&naissance="+naissance1;
+					
+					
+					parames='';
+if (pseudo.length < 2) 
+{
+parames +="Veuillez saisir votre Pseudo \n";
+}
+
+if( ! VerificationMail( email1) ) 
+{
+parames +="Veuillez saisir une Adresse Mail valide\n";
+}
+
+if (passe1.length < 2)  //login
+{
+parames +="Veuillez saisir votre mot de passe \n";
+}
+
+if(parames=='') { 
+  document.getElementById("loadi").innerHTML="<img src='icones/ajax-loader1.gif' style='border:0px;' />";
+                    mypostrequest.open("POST", "http://www.linaweb.ma/a/same/php/newclient.php", true);
+                    mypostrequest.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                    mypostrequest.send(parameters);
+		}
+else
+{navigator.notification.alert(parames,null,"SAMUEL V1.0","OK") ;
+	return false;
+	}
+	
+	
+	
+                  
+                  
+                } 
+				
+			else navigator.notification.alert("Impossible d'envoyer les données, problème de connexion!",null,"SAMUEL V1.0","OK") ;
+                               
+            }
             

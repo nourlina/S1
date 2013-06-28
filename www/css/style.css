@@ -70,6 +70,84 @@ font-size: 11pt;
 	
 }
 
+.usernames input {
+	padding-left: 30px;
+	background: url(../icones/etoile.png) no-repeat left center  #eae8e8;
+	width:80%;
+	height:30px;
+
+	
+	-webkit-border-radius:10px;
+-moz-border-radius:10px;
+-border-radius:10px;
+
+	-webkit-border-top-left-radius:10px;
+    -moz-border-radius-topleft:10px;
+	-webkit-border-top-right-radius:10px;
+    -moz-border-radius-topright:10px;
+	-webkit-border-bottom-left-radius:0px;
+    -moz-border-radius-bottomleft:0px;
+	-webkit-border-bottom-right-radius:0px;
+    -moz-border-radius-bottomright:0px;
+	border-bottom:0px solid #dfdfdf;
+    font-size: 11pt;
+	color: #000;
+	cursor: pointer;
+	text-shadow: 1px 1px 0px #fff;
+border:1px solid white;
+}
+
+.usernamess input {
+	padding-left: 30px;
+	background: url(../icones/etoile.png) no-repeat left center  #eae8e8;
+	width:80%;
+	height:30px;	
+	-webkit-border-radius:10px;
+	-moz-border-radius:10px;
+	-border-radius:10px;
+	-webkit-border-top-left-radius:0px;
+    -moz-border-radius-topleft:0px;
+	-webkit-border-top-right-radius:0px;
+    -moz-border-radius-topright:0px;
+	-webkit-border-bottom-left-radius:0px;
+    -moz-border-radius-bottomleft:0px;
+	-webkit-border-bottom-right-radius:0px;
+    -moz-border-radius-bottomright:0px;
+	border-bottom:0px solid #dfdfdf;
+    font-size: 11pt;
+	color: #000;
+	cursor: pointer;
+	text-shadow: 1px 1px 0px #fff;
+border:1px solid white;
+}
+
+.dates input {
+	padding-left: 30px;
+	background: url(../icones/date1.png) no-repeat left center  #eae8e8;
+	width:80%;
+	height:30px;
+font-size: 11pt;
+	color: #000;
+	cursor: pointer;
+	text-shadow: 1px 1px 0px #fff;
+	
+	-webkit-border-radius:10px;
+-moz-border-radius:10px;
+-border-radius:10px;
+
+	-webkit-border-top-left-radius:0px;
+    -moz-border-radius-topleft:0px;
+	-webkit-border-top-right-radius:0px;
+    -moz-border-radius-topright:0px;
+	-webkit-border-bottom-left-radius:10px;
+    -moz-border-radius-bottomleft:10px;
+	-webkit-border-bottom-right-radius:10px;
+    -moz-border-radius-bottomright:10px;
+	border-bottom:0px solid #dfdfdf;
+	border:1px solid white;
+	
+}
+
 .button1 {
   font-family: Arial;
   color: #ffffff;
@@ -115,100 +193,4 @@ font-size: 11pt;
 .button2:hover {
   background: #fff;
   color: #000;text-decoration:none;outline:none;
-}
-
-
-/*
-div.username input:hover, div#login-form div.username input:focus {
-	padding-left: 30px;
-	color: #000;
-	background: url(../icones/icone-user.png) no-repeat left center  #fff;
-	border: 1px solid #471211;
-	box-shadow: 0px 0px 15px #471211;
-	transition: all 300ms ease;
-	-webkit-transition: all 300ms ease;
-	-moz-transition: all 300ms ease;
-	-o-transition: all 300ms ease;
-}
-div#login-form div.passwd input {
-	padding-left: 30px;
-	background: url(../icones/icone-password_hover.png) no-repeat left center  #f5e6af;
-	transition: all 300ms ease;color:#000;
-	-webkit-transition: all 300ms ease;
-	-moz-transition: all 300ms ease;
-	-o-transition: all 300ms ease;
-}
-div#login-form div.passwd input:hover, div#login-form div.passwd input:focus {
-	padding-left: 30px;
-	color: #000;
-	background: url(../icones/icone-password.png) no-repeat left center  #fff;
-	border: 1px solid #471211;
-	box-shadow: 0px 0px 15px #471211;
-	transition: all 300ms ease;
-	-webkit-transition: all 300ms ease;
-	-moz-transition: all 300ms ease;
-	-o-transition: all 300ms ease;
-}
-div#login-form p input#login_submit, div#login-form p input[type='checkbox'] {
-	margin: 0px;
-	font-size: 10pt;
-	background: red;
-	padding: 5px;
-	border: 1px solid #ddd;
-	border-radius: 3px;
-}
-div#login-form p input[type='checkbox'] {
-	padding: 0px;
-	width: auto;
-	cursor: pointer;
-} 
-div#login-form div.checkbox label {
-	font-size: 9pt;
-	color: #000;
-	cursor: pointer;
-	text-shadow: 1px 1px 0px #fff;
-}
-div#login-form div.checkbox label:hover, div#login-form div.checkbox label:active, div#login-form div.checkbox label:focus {
-	color: #471211;
-}
-div#login-form div.login {
-	width: 70%;
-}
-div#login-form div.mahome {
-	width: 12%;
-}
-div#login-form div.login input#login_submit {
-	width: 100px;
-	position: absolute;
-	right: 0px;
-	text-transform: uppercase;
-	cursor: pointer;
-	color: #fff;
-	text-shadow: 1px 1px 0px #ffca13;
-	background-image: linear-gradient(top, #ffa73e 50%, #ff9101 50%);
-	background-image: -o-linear-gradient(top, #ffa73e 50%, #ff9101 50%);
-	background-image: -moz-linear-gradient(top, #ffa73e 50%, #ff9101 50%);
-	background-image: -webkit-linear-gradient(top, #ffa73e 50%, #ff9101 50%);
-	background-image: -ms-linear-gradient(top, #ffa73e 50%, #ff9101 50%);
-
-	background-image: -webkit-gradient(
-		linear,
-		left top,
-		left bottom,
-		from(#8e181b),
-		to(#471211)
-	); 
-	border: 1px solid #ffca13;
-	transition: all 500ms ease;
-	-webkit-transition: all 500ms ease;
-	-moz-transition: all 500ms ease;
-	-o-transition: all 500ms ease;
-}
-div#login-form div.login input#login_submit:hover, div#login-form div.login input#login_submit:active, div#login-form div.login input#login_submit:focus {
-	color: #ffca13;
-	text-shadow: 1px 1px 0px #49a1f0;
-	transition: all 300ms ease;
-	-webkit-transition: all 300ms ease;
-	-moz-transition: all 300ms ease;
-	-o-transition: all 300ms ease;
 }

@@ -15,4 +15,5 @@
                                                 //x$("#tweet").html(tweets);  }*/ 
 												}
                                                });//end of xhr            }//end of method
-            callWebService();  
+											   }
+          //  callWebService();  
