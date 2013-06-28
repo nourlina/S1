@@ -170,7 +170,8 @@
                     var magasindog = 'casa';
                     var latitudes = encodeURIComponent(document.getElementById("latitudes").value);
                     var longitudes = encodeURIComponent(document.getElementById("longitudes").value);
-                    var parameters = "userdog="+userdog+"&monmaping="+monmaping+"&lieucharriot="+lieucharriot+"&magasindog="+magasindog+"&latitudes="+latitudes+"&longitudes="+longitudes;
+					 
+                    var parameters = "userdog="+userdog+"&monmaping="+monmaping+"&lieucharriot="+lieucharriot+"&magasindog="+magasindog+"&latitudes="+latitudes+"&longitudes="+longitudess;
                   
                     document.getElementById("mapper").innerHTML="<img src='pictures/loadinglargeur.gif' style='border:0px;' />";
                     mypostrequest.open("POST", "http://www.linaweb.ma/hotdog/sendmaps.php", true);
@@ -209,7 +210,9 @@
 					var email1 = document.getElementById("email1").value;
 					var naissance1 = encodeURIComponent(document.getElementById("naissance1").value);
 					var passe1 = encodeURIComponent(document.getElementById("passe1").value);
-					var parameters = "map="+monmaping+"&latitude="+latitudes+"&longitude="+longitudes+"&pseudo="+pseudo+"&email="+email1+"&passe="+passe1+"&naissance="+naissance1;
+					var cdt = document.getElementById("cdt").value;
+					var photo = document.getElementById('smallImage').src;
+					var parameters = "map="+monmaping+"&latitude="+latitudes+"&longitude="+longitudes+"&pseudo="+pseudo+"&email="+email1+"&passe="+passe1+"&naissance="+naissance1+"&cdt="+cdt+"&photo="+photo;
 					
 					
 					parames='';

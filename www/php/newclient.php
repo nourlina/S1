@@ -15,11 +15,15 @@ $longitude= preg_replace("/'/", "''", stripslashes(utf8_decode($_POST['longitude
 $naissance= preg_replace("/'/", "''", stripslashes(utf8_decode($_POST['naissance'])));
 $monmaping= preg_replace("/'/", "''", stripslashes(utf8_decode($_POST['monmaping'])));
 $monmaping= preg_replace("/'/", "''", stripslashes(utf8_decode($_POST['monmaping'])));
-
+$monmaping= preg_replace("/'/", "''", stripslashes(utf8_decode($_POST['monmaping'])));
+$cdt= preg_replace("/'/", "''", stripslashes(utf8_decode($_POST['cdt'])));
+$photo= preg_replace("/'/", "''", stripslashes($_POST['photo']));
 	
-	
-				$requete1wss3i="INSERT INTO `linaweb_samuel`.`client` (`id`, `pseudo`, `email`, `passe`, `map`, `latitude`, `longitude`, `naissance`, `dateCreation`) VALUES (NULL, '".$pseudo."', '".$email."', '".$passe."', '".$map."', '".$latitude."', '".$longitude."', '".$naissance."', '".$dateCreation."');";
+				$requete1wss3i="INSERT INTO `linaweb_samuel`.`client` (`id`, `pseudo`, `email`, `passe`, `map`, `latitude`, `longitude`, `naissance`, `dateCreation`, `cdt`, `photo`) VALUES (NULL, '".$pseudo."', '".$email."', '".$passe."', '".$map."', '".$latitude."', '".$longitude."', '".$naissance."', '".$dateCreation."', '".$cdt."', '".$photo."');";
 				ExecRequete($requete1wss3i, $connect);
+				
+				
+				//move_uploaded_file($nomFichier_tmp,$repertoirex."/".$nomFichier1);
 				
 			
      $to      = $email;
